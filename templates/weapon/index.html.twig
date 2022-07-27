@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello WeaponController!{% endblock %}
+
+{% block body %}
+<h1 class="m-5">Weapons List</h1>
+<div class="characters-container">
+
+    {% for weapon in weapons %}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{ asset("images/weapons/" ~ weapon.name ~ ".png")}}" class="card-img-top" alt="{{weapon.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{weapon.name|title}}</h5>
+        <a href="{{path('show_weapon', {'id': weapon.id})}}" class="btn btn-primary">See more...</a>
+      </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}

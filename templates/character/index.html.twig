@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CharacterController!{% endblock %}
+
+{% block body %}
+<h1 class="title m-5">Characters List</h1>
+
+<div class="characters-container">
+
+    {% for player in players %}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{ asset("images/characters/" ~ player.name|title ~ ".png")}}" class="card-img-top" alt="{{player.name}}">
+      <div class="card-body">
+        <h5 class="card-title">{{player.name|title}}</h5>
+        <p class="card-text">{{ player.age}} years</p>
+        <p class="card-text">{{ player.sex ? 'male' : 'female' }}</p>
+        <a href="{{path('show_character', {'id': player.id})}}" class="btn btn-primary">See more...</a>
+      </div>
+    </div>
+
+    {% endfor %}
+
+</div>
+{% endblock %}
